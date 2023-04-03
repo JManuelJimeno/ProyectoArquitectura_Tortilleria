@@ -112,7 +112,6 @@ public class Inicio extends javax.swing.JFrame {
         Principal p1=new Principal();
         p1.setVisible(true);
         new Inicio().setVisible(false);
-        this.dispose();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
