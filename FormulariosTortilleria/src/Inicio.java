@@ -1,3 +1,7 @@
+
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -30,7 +34,7 @@ public class Inicio extends javax.swing.JFrame {
         TxtPsw = new javax.swing.JTextField();
         lblPsw = new javax.swing.JLabel();
         txtUser = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnEntrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,17 +44,13 @@ public class Inicio extends javax.swing.JFrame {
         lblUser.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         lblUser.setText("Usuario");
 
-        TxtPsw.setText("\n");
-
         lblPsw.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         lblPsw.setText("Password");
 
-        txtUser.setText(" ");
-
-        jButton1.setText("Entrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnEntrar.setText("Entrar");
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnEntrarActionPerformed(evt);
             }
         });
 
@@ -74,7 +74,7 @@ public class Inicio extends javax.swing.JFrame {
                         .addComponent(TxtPsw, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(191, 191, 191)
-                        .addComponent(jButton1)))
+                        .addComponent(btnEntrar)))
                 .addContainerGap(78, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -95,7 +95,7 @@ public class Inicio extends javax.swing.JFrame {
                         .addComponent(lblPsw))
                     .addComponent(TxtPsw, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnEntrar)
                 .addGap(39, 39, 39))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -107,13 +107,26 @@ public class Inicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         // TODO add your handling code here:
-        Principal p1=new Principal();
-        p1.setVisible(true);
-        new Inicio().setVisible(false);
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+            String user = txtUser.getText().toString();
+            String condicion = "usuario='"+user+"'";
+            String psw = TxtPsw.getText().toString()+",";
+            System.out.println(psw);
+                  
+            String datos = consultar("usuario", "psw", condicion);
+            System.out.println(datos);
+            System.out.println("Hola");
+            if(psw.equals(datos)){
+                Principal p1=new Principal();
+                p1.setVisible(true);
+                new Inicio().setVisible(false);
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(null, "Usuario desconocido!");                
+            }                                
+        /*        */
+    }//GEN-LAST:event_btnEntrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,10 +165,17 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField TxtPsw;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnEntrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblPsw;
     private javax.swing.JLabel lblUser;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
+
+    private static String consultar(java.lang.String nombreTabla, java.lang.String datos, java.lang.String condicion) {
+        pkg.webservice.WSTortilleria_Service service = new pkg.webservice.WSTortilleria_Service();
+        pkg.webservice.WSTortilleria port = service.getWSTortilleriaPort();
+        return port.consultar(nombreTabla, datos, condicion);
+    }
 }
+

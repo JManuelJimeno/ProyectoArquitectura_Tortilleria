@@ -1,5 +1,3 @@
-
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -7,7 +5,7 @@
 
 /**
  *
- * @author ramirohb
+ * @author Manuel Jimeno
  */
 public class Principal extends javax.swing.JFrame {
 
@@ -17,8 +15,6 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,30 +25,13 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        escritorio = new javax.swing.JDesktopPane();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        btninicio = new javax.swing.JMenu();
-        btnProveedor = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        btnModi = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        btnProveedor = new javax.swing.JButton();
+        btnVentas = new javax.swing.JButton();
+        btnInventario = new javax.swing.JButton();
+        btnUsuarios = new javax.swing.JButton();
+        btnCSes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
-        escritorio.setLayout(escritorioLayout);
-        escritorioLayout.setHorizontalGroup(
-            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 563, Short.MAX_VALUE)
-        );
-        escritorioLayout.setVerticalGroup(
-            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
-        );
-
-        btninicio.setText("Inicio");
-        jMenuBar1.add(btninicio);
 
         btnProveedor.setText("Proveedor");
         btnProveedor.addActionListener(new java.awt.event.ActionListener() {
@@ -61,53 +40,62 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem1.setText("Proveedor");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        btnVentas.setText("Ventas");
+        btnVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                btnVentasActionPerformed(evt);
             }
         });
-        btnProveedor.add(jMenuItem1);
 
-        btnModi.setText("Modificacion");
-        btnModi.addActionListener(new java.awt.event.ActionListener() {
+        btnInventario.setText("Inventario");
+        btnInventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModiActionPerformed(evt);
+                btnInventarioActionPerformed(evt);
             }
         });
-        btnProveedor.add(btnModi);
 
-        jMenuBar1.add(btnProveedor);
-
-        jMenu1.setText("Inventario");
-
-        jMenuItem2.setText("Inventario");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        btnUsuarios.setText("Usuarios");
+        btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                btnUsuariosActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
 
-        jMenuBar1.add(jMenu1);
-
-        setJMenuBar(jMenuBar1);
+        btnCSes.setText("Cerrar Sesion");
+        btnCSes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCSesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(escritorio)
-                .addContainerGap())
+                .addComponent(btnProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCSes, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(escritorio)
-                .addContainerGap())
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnProveedor)
+                    .addComponent(btnVentas)
+                    .addComponent(btnInventario)
+                    .addComponent(btnUsuarios)
+                    .addComponent(btnCSes))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         pack();
@@ -115,26 +103,38 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedorActionPerformed
         // TODO add your handling code here:
-            
+        Proveedor prove = new Proveedor();
+        prove.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnProveedorActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
         // TODO add your handling code here:
-        ProveedorInterno prov=new ProveedorInterno();
-            escritorio.add(prov);
-            prov.show();
-        
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+        Ventas vent = new Ventas();
+        vent.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnVentasActionPerformed
 
-    private void btnModiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModiActionPerformed
+    private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnModiActionPerformed
+        Inventario inv = new Inventario();
+        inv.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnInventarioActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        InventarioIntFrame inv = new InventarioIntFrame();
-        escritorio.add(inv);
-        inv.show();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
+        // TODO add your handling code here:
+        Usuarios usu = new Usuarios();
+        usu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnUsuariosActionPerformed
+
+    private void btnCSesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCSesActionPerformed
+        // TODO add your handling code here:
+        Inicio ini = new Inicio();
+        ini.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnCSesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,19 +167,15 @@ public class Principal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Principal().setVisible(true);
-                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem btnModi;
-    private javax.swing.JMenu btnProveedor;
-    private javax.swing.JMenu btninicio;
-    private javax.swing.JDesktopPane escritorio;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JButton btnCSes;
+    private javax.swing.JButton btnInventario;
+    private javax.swing.JButton btnProveedor;
+    private javax.swing.JButton btnUsuarios;
+    private javax.swing.JButton btnVentas;
     // End of variables declaration//GEN-END:variables
 }
