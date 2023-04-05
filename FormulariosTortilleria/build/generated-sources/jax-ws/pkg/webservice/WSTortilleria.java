@@ -65,6 +65,21 @@ public interface WSTortilleria {
 
     /**
      * 
+     * @param name
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "hello", targetNamespace = "http://webService.pkg/", className = "pkg.webservice.Hello")
+    @ResponseWrapper(localName = "helloResponse", targetNamespace = "http://webService.pkg/", className = "pkg.webservice.HelloResponse")
+    @Action(input = "http://webService.pkg/WSTortilleria/helloRequest", output = "http://webService.pkg/WSTortilleria/helloResponse")
+    public String hello(
+        @WebParam(name = "name", targetNamespace = "")
+        String name);
+
+    /**
+     * 
      * @param nombreTabla
      * @param datos
      * @param condicion
@@ -101,20 +116,5 @@ public interface WSTortilleria {
         String nombreTabla,
         @WebParam(name = "campos", targetNamespace = "")
         String campos);
-
-    /**
-     * 
-     * @param name
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "hello", targetNamespace = "http://webService.pkg/", className = "pkg.webservice.Hello")
-    @ResponseWrapper(localName = "helloResponse", targetNamespace = "http://webService.pkg/", className = "pkg.webservice.HelloResponse")
-    @Action(input = "http://webService.pkg/WSTortilleria/helloRequest", output = "http://webService.pkg/WSTortilleria/helloResponse")
-    public String hello(
-        @WebParam(name = "name", targetNamespace = "")
-        String name);
 
 }
